@@ -3,6 +3,7 @@ import sklearn #python library for classical machine learning
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+
 # this can also be a local (to the cloud instance) file!
 location = 'https://gist.githubusercontent.com/ruyimarone/04d356038138f12df205da9934e797f1/raw/e3bb9212eae46e10f85b765f5a3ab95e0428c3ee/data.csv'
 df = pd.read_csv(location)
@@ -13,10 +14,10 @@ df.head()
 df[df['tags'].str.contains('python')].head()
 
 
-cv = sklearn.feature_extraction.text.CountVectorizer()
-m = cv.fit_transform(['this is a document', 'this is a second document', 'third document document document']).todense()
-print(cv.vocabulary_)
-print(m)
+#cv = sklearn.feature_extraction.text.CountVectorizer()
+#m = cv.fit_transform(['this is a document', 'this is a second document', 'third document document document']).todense()
+#print(cv.vocabulary_)
+#print(m)
 
 count_vectorizer = sklearn.feature_extraction.text.CountVectorizer()
 td_count_matrix = count_vectorizer.fit_transform(df['tags'])
