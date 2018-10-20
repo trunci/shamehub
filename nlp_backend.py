@@ -1,5 +1,16 @@
 import nltk #natural language toolkit
 import sklearn #python library for classical machine learning 
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+# this can also be a local (to the cloud instance) file!
+location = 'https://gist.githubusercontent.com/ruyimarone/04d356038138f12df205da9934e797f1/raw/e3bb9212eae46e10f85b765f5a3ab95e0428c3ee/data.csv'
+df = pd.read_csv(location)
+# this drops any rows that have NaN values or other missing entries - we won't worry about them
+df = df.dropna()
+
+df.head()
+df[df['tags'].str.contains('python')].head()
 
 
 cv = sklearn.feature_extraction.text.CountVectorizer()
