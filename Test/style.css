@@ -11,52 +11,38 @@ body {
     background: #f2f2f2;
     color: black;
     height: 100%;
+    font-family: 'Source Sans Pro', sans-serif;
+    margin: 0;
+
     
     
 }
 
 .hub {
-  font-family: sans-serif;
   font-weight: bold;
   font-size: 5vw;
-  position: fixed;
-  top: 10%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  float:top;
+  overflow: hidden;
+  color: white;
+  position: relative;
+  padding: 1%;
+  background: #3b5998;
+
+}
+
+.hub:hover {
+
+cursor: pointer;
+
 }
 
 .hub span:nth-child(2) {
-  background: #3b5998;
-  color: white;
+  background: white;
+  color: #3b5998;
   border-radius: 1vw;
   padding: 0 1vw 0.5vw 1vw;
   display: inline-block;
 }
 
-
-.lbut {
-    background-color: #3B5998;
-    border: none;
-    color: white;
-    padding: 0 2vw 1vw 2vw;
-    text-align: center;
-    cursor: pointer;
-    text-decoration: none;
-    font-size: 5vw;
-    font-family: sans-serif;
-    border-radius: 1vw;
-
-}
-
-
-.loginb{
-  display: flex;
-  height: 100%;
-  align-items: center;
-  justify-content: center;
-
-}
 
 .main {
     position: relative;

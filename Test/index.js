@@ -160,7 +160,7 @@ function generateBoxes(response) {
 			document.getElementById("postsAnalyzed").innerHTML = "Posts Analyzed: " + analyzed;
 		}
 
-		score = (1 - (found/analyzed))*100;
+		score = round((1 - (found/analyzed))*100);
 		myScore = document.createElement("h3");
 		myScore.id = "score";
 
