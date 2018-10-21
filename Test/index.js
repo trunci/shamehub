@@ -1,44 +1,40 @@
- window.fbAsyncInit = function() {
-    FB.init({
-      appId      : '299447580655569',
-      cookie     : true,
-      xfbml      : true,
-      version    : 'v3.1'
-    });
-      
-    FB.AppEvents.logPageView();   
-      
-  };
+// Initialize the Facebook API, using the App's unique Id
+// Basically interval given FB stuff
 
-  (function(d, s, id){
-     var js, fjs = d.getElementsByTagName(s)[0];
-     if (d.getElementById(id)) {return;}
-     js = d.createElement(s); js.id = id;
-     js.src = "https://connect.facebook.net/en_US/sdk.js";
-     fjs.parentNode.insertBefore(js, fjs);
-   }(document, 'script', 'facebook-jssdk'));
+window.fbAsyncInit = function() {
+	FB.init({
+	  appId      : '299447580655569',
+	  cookie     : true,
+	  xfbml      : true,
+	  version    : 'v3.1'
+	});
+	FB.AppEvents.logPageView();   
+};
 
+(function(d, s, id){
+	var js, fjs = d.getElementsByTagName(s)[0];
+	if (d.getElementById(id)) {return;}
+	js = d.createElement(s); js.id = id;
+	js.src = "https://connect.facebook.net/en_US/sdk.js";
+	fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+
+
+// Function to see if the user has logged in. Is called after the person's login has been completed
+// When it ends, it calls a new function, to start the first outputs to the website
 function checkLoginState() {
       FB.getLoginStatus(function(response) {
         statusChangeCallback(response);
     });
-      document.getElementById("start").style = "display: none;"
+      document.getElementById("start").style = "display: none;";
+      document.getElementById("introduction").style = "display: none;";
+
       startWithName();
 }
 
-
-function getPosts() {
-FB.api('/me/posts', function(response) {
-    console.log(response);
-    generateBoxes(response);
-})
-}
-
-
-
-
+// Function that gets the name of the user and creates a welcome message, as well as the user's name on the top left
 function startWithName() {
-// Will handle the HTTP response for the name of the person and their id
+	// Will handle the HTTP response for the name of the person and their id
 	FB.api('/me', function(response) {
 		console.log(response);
 	  	var welcome = document.createElement("p");
@@ -47,31 +43,25 @@ function startWithName() {
 		welcome.innerHTML = "Hi, " + response.name + "!"
 		document.getElementById("perfil").appendChild(welcome);
 	});
-	
-		var welcome1 = document.createElement("p");
-		welcome1.id = "welcome1";
-		welcome1.innerHTML = "What do you think about removing your Facebook posts that can be, humm, controversial? Your friends and future connections/employers would really like that!";
-		document.getElementById("start").appendChild(welcome1);
-
+	// Calls the next function
 	getPosts();
 }
 
 
-
-
-
-function viewPost(id){
-
-	console.log(id);
-	window.open("https://facebook.com/" + id);
-	document.getElementById(id).classList.add("opened");
-
+// Uses the FB API to get the user's posts, giving them in a response object
+function getPosts() {
+	FB.api('/me/posts', function(response) {
+	    console.log(response);
+	    // Calls the functions that start generating the boxes with the posts filtered.
+	    generateBoxes(response);
+	})
 }
 
 
+// Helper function to create a box. It has as inputs the id of the post, the time it was posted and its contents
+// It is used so that it can be iterated through
 
-
-
+// Basically creates many DOM objects and adds them to the HTML page
 function generateBox(id, time, contents){
 
 	var div = document.createElement("div");
@@ -112,7 +102,9 @@ function generateBoxes(response) {
 		time = response.data[i].created_time;
 		message = response.data[i].message;
 		id = response.data[i].id;
-		message = message.toLowerCase();
+		if (message != null){
+			message = message.toLowerCase();
+		}
 
 		for (x=0; x<700; x++){
 			console.log(message);
@@ -126,13 +118,21 @@ function generateBoxes(response) {
 			}
 		}
 		analyzed = analyzed + 1;
+		}
+
+		if (found==0){
+			document.getElementById("descr").innerHTML = "You are clean! Nothing controversial to show! Congratulations!";
+		}
+		else{
+			document.getElementById("descr").innerHTML = "Here are the posts we found. Good luck looking at all of them!";
+		}
 
 		// Create the counter with the number of sketchy posts found, one with the number of posts analyzed and one with the score
 		postsFound = document.createElement("h3");
 		postsFound.classList = "counts";
 		postsFound.id = "postsFound";
 		if (document.getElementById("postsFound") == null){
-			postsFound.innerHTML = "Sketchy Posts Found: " + found;//str(analyzed);
+			postsFound.innerHTML = "Posts Found: " + found;//str(analyzed);
 			document.getElementById("counters").appendChild(postsFound);
 		}
 		else{
@@ -149,7 +149,7 @@ function generateBoxes(response) {
 			document.getElementById("counters").appendChild(postsAnalyzed);
 		}
 		else{
-			document.getElementById("postsAnalyzed").innerHTML = "Posts Analyzed: " + analyzed;
+			document.getElementById("postsAnalyzed").innerHTML = "Posts Flagged: " + analyzed;
 		}
 
 		score = Math.round((1 - (found/analyzed))*100);
@@ -166,5 +166,14 @@ function generateBoxes(response) {
 		}
 
 
-	}
+	
+}
+
+
+function viewPost(id){
+
+	console.log(id);
+	window.open("https://facebook.com/" + id);
+	document.getElementById(id).classList.add("opened");
+
 }

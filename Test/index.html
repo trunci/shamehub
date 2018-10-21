@@ -8,41 +8,36 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
     <script type="text/javascript" src="keywords.json"></script>
-
-
 </head>
+
 <body>
 <script src="index.js"></script>
+<div class="wrapper">
+<div class="hub">
+    <span contenteditable="false" onclick="location.reload()">Shame</span>
+    <span contenteditable="false" onclick="location.reload()">Hub</span>
+</div>
 
-    <div class="hub">
-        <span contenteditable="false" onclick="location.reload()">Shame</span>
-        <span contenteditable="false" onclick="location.reload()">Hub</span>
-    </div>
+<h3 id="perfil" class="perfil"> </h3>
 
-    <h3 id="perfil" class="perfil"> What do you think about removing your Facebook posts that can be, humm, controversial? Your friends and future connections/employers would really like that! Just log in here using your Facebook account and we'll give you an entire list with the posts that we believe could get you in trouble. Enjoy!
-    </h3>
+<h1 style="margin: 5%" id="introduction">What do you think about removing your Facebook posts that can be, humm, controversial? Your friends and future connections/employers would really like that! Just log in here using your Facebook account and we'll give you an entire list with the posts that we believe could get you in trouble. In the end, we give you a score. The closer to 100, the better. Go compare with your friends and see who has the most controversial profiles! Enjoy!</h1>
 
-    <h1> </h1>
-    
-    <div id="start">
+<div id="start">
+<fb:login-button style = "margin-left: 48%" scope="public_profile,email,publish_pages,user_posts"
+                 onlogin="checkLoginState();">
+</fb:login-button>
+</div>
 
-    <fb:login-button style = "margin-left: 48%" scope="public_profile,email,publish_pages,user_posts"
-                     onlogin="checkLoginState();">
-    </fb:login-button>
-    </div>
+<p id="descr" style="text-align: center; font-size: 1.5em"></p>
+<div id= "counters" class="counters"></div>
+<div id="posts">
+</div>
+</div>
 
+<footer id="footnotes" class="footnotes">
+    <p> Made with ❤, ☕ and 😡 by <a href="https://www.linkedin.com/in/etrunci/">Eduardo Costa Trunci</a>, <a href="https://www.github.com/bvrigo/">Bruno Rigo</a>, <a href="https://www.github.com/lucask18/">Lucas Katayama</a>, and <a href="https://www.github.com/davinan/">Davi Nakajima An</a>.</p>
+    <p>2018 Copyright©, all rights reserved.</p> 
 
-    <p></p>
-    <div id= "counters" class="counters"></div>
-    <div id="posts">
-    </div>
-
-
-    <div id="footnotes" class="footnotes">
-        <h3> Made with love, coffee and hate by <a href="https://www.linkedin.com/in/etrunci/">Eduardo Costa Trunci</a>, <a href="https://www.github.com/bvrigo/">Bruno Rigo</a>, <a href="https://www.github.com/lucask18/">Lucas Katayama</a>, and <a href="https://www.github.com/davinan/">Davi Nakajima An</a>.</h3>
-        <h4>2018 Copyright©, all rights reserved.</h4> 
-
-
-    </div>
+</footer>
 </body>
 </html>
