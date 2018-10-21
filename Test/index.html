@@ -2,10 +2,13 @@
 <html lang="en">
 
 <head>
+    <link rel= "shortcut icon" href="sh_icon.ico">
     <meta charset="utf-8">
     <title>Shame Hub</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+    <script type="text/javascript" src="keywords.json"></script>
+
 </head>
 <body>
 <script src="index.js"></script>
@@ -15,12 +18,21 @@
         <span contenteditable="false" onclick="location.reload()">Hub</span>
     </div>
 
-    <p></p>
-    <fb:login-button scope="public_profile,email,publish_pages,user_posts"
+    <h3 id="perfil" class="perfil">
+    </h3>
+
+    <h1> </h1>
+    
+    <div id="start">
+
+    <fb:login-button style = "margin-left: 48%" scope="public_profile,email,publish_pages,user_posts"
                      onlogin="checkLoginState();">
     </fb:login-button>
+    </div>
+
+
     <p></p>
-    <div id= "counters"></div>
+    <div id= "counters" class="counters"></div>
     <div id="posts">
     </div>
 </body>
