@@ -1,15 +1,11 @@
 import newspaper
 from newspaper import Article
 
-op_eds = newspaper.build('https://www.cnn.com/specials/opinion/opinion-politics')
+op_eds = newspaper.build('https://www.cnn.com')
 
 i = 0
+print(len(op_eds.articles))
 for art in op_eds.articles:
-    if (i == 100):
-        break
     print (art.url)
-    art.download
     i += 1
 
-
-    
