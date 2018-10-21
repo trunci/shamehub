@@ -15,7 +15,9 @@ window.fbAsyncInit = function() {
 }(document, 'script', 'facebook-jssdk'));
 
 
-
+FB.getLoginStatus(function(response) {
+    statusChangeCallback(response);
+});
 
 
 function login() {
@@ -50,7 +52,7 @@ FB.api('/me/posts', function(response) {
 function startWithName() {
 // Will handle the HTTP response for the name of the person and their id
 	FB.api('/me', function(response) {
-	  	var welcome = docu/ment.createElement("p");
+	  	var welcome = document.createElement("p");
 		welcome.id = "welcome";
 		welcome.class = "welcome";
 		welcome.innerHTML = "Hi, " + response.name + "!"
