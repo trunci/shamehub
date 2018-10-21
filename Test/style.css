@@ -1,0 +1,147 @@
+
+head{
+    height:100%;
+    
+
+}
+
+
+html,
+body {
+    background: #f2f2f2;
+    color: black;
+    height: 100%;
+    
+    
+}
+
+.hub {
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 5vw;
+  position: fixed;
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  float:top;
+}
+
+.hub span:nth-child(2) {
+  background: #3b5998;
+  color: white;
+  border-radius: 1vw;
+  padding: 0 1vw 0.5vw 1vw;
+  display: inline-block;
+}
+
+
+.lbut {
+    background-color: #3B5998;
+    border: none;
+    color: white;
+    padding: 0 2vw 1vw 2vw;
+    text-align: center;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 5vw;
+    font-family: sans-serif;
+    border-radius: 1vw;
+
+}
+
+
+.loginb{
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.main {
+    position: relative;
+    display: block;
+    width: 80%;
+    margin-bottom: 1%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #ededed;
+    padding: 10px 10px 10px 10px;
+    border-radius: 1vm;
+}
+
+
+.date {
+    font-family: 'Montserrat', sans-serif;
+    padding-right:10%;
+    align-content:center;
+    display:table-cell;
+    /*margin-left: 2%;
+    display: inline-block;
+    padding: 1vw 2vw 1vw 2vw;
+    background-color: #d9d9d9;*/
+    /*border: solid;
+    border-width: 1px;
+    border-color: grey;
+    border-radius: 1vw;*/
+    /*text-align: center;
+    vertical-align: middle;*/
+    
+}
+
+.content {
+    font-family: 'Montserrat', sans-serif;
+    display: table-cell;
+    margin-left: 10%;
+    /*display: inline-block;
+    padding: 1vw 2vw 1vw 2vw;
+    background-color: #d9d9d9;
+    border: solid;
+    border-width: 1px;
+    border-color: grey;
+    border-radius: 1vw;
+    text-align: center;
+    vertical-align: middle;*/
+}
+
+.edit {
+    font-family: 'Montserrat', sans-serif;
+    display: inline-block;
+    float: right;
+    background-color: #d9d9d9;
+    padding: 0 0 0 0;
+    
+ 
+
+}
+
+
+
+.welcome {
+    font-family: 'Montserrat', sans-serif;
+    padding: 10px 10px 10px 10px;
+   
+    text-align: center;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    float: top;
+    margin-top: 20px;
+}
+
+
+
+    
+
+.topbar {
+    background-color: #4567b0;
+    float: top;
+    width: 100.5% border-bottom:solid;
+    border-color: black;
+    border-width: 0.5px;
+    margin-left: -9px;
+    margin-top: -10px;
+    margin-right: -10px;
+    overflow: no-display;
+    padding-bottom:5px;
+}
