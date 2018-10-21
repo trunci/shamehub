@@ -18,6 +18,12 @@
      fjs.parentNode.insertBefore(js, fjs);
    }(document, 'script', 'facebook-jssdk'));
 
+function checkLoginState() {
+      FB.getLoginStatus(function(response) {
+        statusChangeCallback(response);
+    });
+      startWithName();
+}
 
 function login() {
     FB.login(function(response) {
@@ -46,8 +52,6 @@ FB.api('/me/posts', function(response) {
 
 
 
-
-
 function startWithName() {
 // Will handle the HTTP response for the name of the person and their id
 	FB.api('/me', function(response) {
@@ -55,17 +59,16 @@ function startWithName() {
 		welcome.id = "welcome";
 		welcome.class = "welcome";
 		welcome.innerHTML = "Hi, " + response.name + "!"
-		document.appendChild(welcome);
+		document.body.appendChild(welcome);
 	});
 
 
 // Will handle the second request for number of friends
-	FB.api('/me/friends', {fields: 'summary'}, function(response) {
+	
 		var welcome1 = document.createElement("p");
 		welcome1.id = "welcome1";
-		welcome1.innerHTML = "What do you think about removing your Facebook posts that can be, humm, controversial? Your " + response.summary.total_count + " friends and future connections/employers would really like that!";
-		document.appendChild(welcome1);
-	});
+		welcome1.innerHTML = "What do you think about removing your Facebook posts that can be, humm, controversial? Your friends and future connections/employers would really like that!";
+		document.body.appendChild(welcome1);
 
 	getPosts();
 }
@@ -74,11 +77,10 @@ function startWithName() {
 
 
 
-function viewPost(post){
+function viewPost(id){
 
-	postId = post.id;
-	removeElement(post);
-	window.open("https://facebook.com/me/" + postId);
+	console.log(id);
+	window.open("https://facebook.com/" + id);
 
 }
 
@@ -97,10 +99,11 @@ function generateBox(id, time, contents){
 	var content = document.createElement("div");
 	content.classList = "content";
 	content.innerHTML = contents;
-	var deleteBttn= document.createElement("button");
+	var deleteBttn = document.createElement("button");
 	deleteBttn.classList = "delete";
-	deleteBttn.innerHTML = "Delete";
-	deleteBttn.onclick = "deletePost(this)";
+	deleteBttn.innerHTML = "Review";
+	deleteBttn.onclick = function(){viewPost(id)};
+
 
 	div.appendChild(date);
 	div.appendChild(content);
@@ -117,14 +120,16 @@ function generateBoxes(response) {
 	found = 0;
 	analyzed = 0;
 	score = 0;
-	for (i=0; i<100; i++){
-		time = response.data(i).created_time;
-		message = response.data(i).message;
-		id = response.data(i).id;
+	for (i=0; i<response.data.length; i++){
+		time = response.data[i].created_time;
+		message = response.data[i].message;
+		id = response.data[i].id;
 		list = ['the', 'oi'];
 
 		for (word in list){
-			if (message.search(word) != -1){
+			console.log(message);
+			console.log(word);
+			if (message != null && message.search(list[word]) != -1){
 				generateBox(id, time, message);
 				found = found + 1;
 			}
@@ -136,18 +141,37 @@ function generateBoxes(response) {
 		// Create the counter with the number of sketchy posts found, one with the number of posts analyzed and one with the score
 		postsFound = document.createElement("h3");
 		postsFound.id = "postsFound";
-		postsFound.innerHTML = "Sketchy Posts Found: " + str(found);
-		document.getElementById("counters").appendChild(postsFound);
+		if (document.getElementById("postsFound") == null){
+			postsFound.innerHTML = "Sketchy Posts Found: " + found;//str(analyzed);
+			document.getElementById("counters").appendChild(postsFound);
+		}
+		else{
+			document.getElementById("postsFound").innerHTML = "Sketchy Posts Found: " + found;
+		}
 
 		postsAnalyzed = document.createElement("h3");
 		postsAnalyzed.id = "postsAnalyzed";
-		postsAnalyzed.innerHTML = "Posts Analyzed: " + str(analyzed);
-		document.getElementById("counters").appendChild(postsAnalyzed);
+
+		if (document.getElementById("postsAnalyzed") == null){
+			postsAnalyzed.innerHTML = "Posts Analyzed: " + analyzed;//str(analyzed);
+			document.getElementById("counters").appendChild(postsAnalyzed);
+		}
+		else{
+			document.getElementById("postsAnalyzed").innerHTML = "Posts Analyzed: " + analyzed;
+		}
 
 		score = (1 - (found/analyzed))*100;
 		myScore = document.createElement("h3");
 		myScore.id = "score";
-		myScore.innerHTML = "Posts Analyzed: " + str(score);
-		document.getElementById("counters").appendChild(myScore);
+
+		if (document.getElementById("score") == null){
+			myScore.innerHTML = "Score: " + score;
+			document.getElementById("counters").appendChild(myScore);
+		}
+		else{
+			document.getElementById("score").innerHTML = "Score: " + score;
+		}
+
+
 	}
 }
