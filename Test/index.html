@@ -5,12 +5,31 @@
     <meta charset="utf-8">
     <title>Shame Hub</title>
     <link rel="stylesheet" href="style.css">
-    <script src="index.js"></script>
     
 </head>
 <body>
+    <script>
+    window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '299447580655569',
+      cookie     : true,
+      xfbml      : true,
+      version    : 'v3.1'
+    });
+      
+    FB.AppEvents.logPageView();   
+      
+  };
 
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
 
+</script>
 
 
 
@@ -19,45 +38,20 @@
         <span contenteditable="false">Hub</span>
     </div>
 
-    <!--<div class="loginb">-->
-    <!--<a id= "0" onclick-->
-    <fb:login-button scope="public_profile,email,publish_pages,user_posts"
-                     onlogin="checkLoginState();">
-    </fb:login-button>
-
-
-    <!--<div class="topbar">
-        <img src="logo.png" height="50px" width="50px" />
-
-
-    </div>-->
 
     <div>
         <h2 class="welcome">
             Hi Mitchel Tchemer! Here are some of your contraversial posts!
-
         </h2>
     </div>
-
-
-
+    <p></p>
+    <fb:login-button scope="public_profile,email,publish_pages,user_posts"
+                     onlogin="checkLoginState();">
+    </fb:login-button>
+    <p></p>
     <div id="posts">
-        <div id='POST_ID'>
-            <!--<div class="main">-->
-            <!--<h3 class="date"></h3>
-            <h4 class='content'></h4>
-            <div class="edit" onclick="deletePost(this)"><img src="edit.png" height="30px" width="30px" /></div>-->
-
-        </div>
     </div>
 
-
-
-
-
-
-
-
-
-
 </body>
+<script src="index.js"></script>
+</html>
