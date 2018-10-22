@@ -73,7 +73,14 @@ function generateBox(id, time, contents){
 	date.innerHTML = time;
 	var content = document.createElement("div");
 	content.classList = "content";
-	content.innerHTML = contents;
+	
+	if (contents.lenght < 120){
+		content.innerHTML = contents;
+	}
+	else{
+		content.innerHTML = contents.slice(0, 100) + "...";
+	}
+
 	var deleteBttn = document.createElement("input");
 	deleteBttn.type = "image";
 	deleteBttn.src = "edit.png";
