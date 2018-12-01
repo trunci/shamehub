@@ -198,9 +198,6 @@ function generateBoxes(response) {
 		}
 
 		for (x=0; x<700; x++){
-			console.log(message);
-			console.log(x);
-			console.log(list);
 			if (message != null && message.search(list[x]) != -1 && document.getElementById(id) == null){
 				generateBox(id, time, message);
 				found = found + 1;
