@@ -42,6 +42,7 @@ var database = firebase.database();
 // Get the lsit of words from the database
 database.ref('words/').on('value', function(snapshot) {
 		list = snapshot.val();
+		list = list.split(",");
 	});
 
 // Check to see the info on the user or create a new user
@@ -185,8 +186,6 @@ function generateBox(id, time, contents){
 }
 
 
-
-
 function generateBoxes(response) {
 	// Iterate through the words and see which have the kwy words. If it does have any, create the element in HTML
 	found = 0;
@@ -201,7 +200,7 @@ function generateBoxes(response) {
 		}
 
 		for (x=0; x<700; x++){
-			if (message != null && document.getElementById(id) == null && message_lower.search(list[x]) != -1){
+			if (message != null && document.getElementById(id) == null && message_lower.search([x]) != -1){
 				generateBox(id, time, message);
 				found = found + 1;
 				break;
