@@ -1,8 +1,6 @@
 // Initialize the Facebook API, using the App's unique Id
 // Basically interval given FB stuff
 
-
-
 window.fbAsyncInit = function() {
 	FB.init({
 	  appId      : '299447580655569',
@@ -13,7 +11,6 @@ window.fbAsyncInit = function() {
 	FB.AppEvents.logPageView();   
 };
 
-
 (function(d, s, id){
 	var js, fjs = d.getElementsByTagName(s)[0];
 	if (d.getElementById(id)) {return;}
@@ -21,56 +18,6 @@ window.fbAsyncInit = function() {
 	js.src = "https://connect.facebook.net/en_US/sdk.js";
 	fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));
-
-
-
-
-// Initialize Firebase Database
-
-var config = {
-	apiKey: "AIzaSyBr4MdONYacDGIdh5z-Xm3Qr9gBDRLFmkc",
-	authDomain: "shamehub-101010.firebaseapp.com",
-	databaseURL: "https://shamehub-101010.firebaseio.com",
-	projectId: "shamehub-101010",
-	storageBucket: "shamehub-101010.appspot.com",
-	messagingSenderId: "955219006464",
-};
-
-firebase.initializeApp(config);
-var database = firebase.database();
-
-
-// Check to see the info on the user or create a new user
-function checkUser(name, userId){
-	// Check if user has already used the website
-	database.ref('users/' + userId).on('value', function(snapshot) {
-		a = snapshot; 
-	});
-
-	if (a != undefined) {
-		// Create new User
-		createNewUser(name, userId);
-		paid = false;
-	} else {
-
-		if (a.paid == "no"){
-			paid = false;
-		} else {
-			paid = true;
-		}
-
-	}
-}
-
-
-// Function to create a new user
-function createNewUser(name, userId){
-	  firebase.database().ref('users/' + userId).set({
-	    username: name,
-	    paid: "no"
-  });
-}
-
 
 
 // Function to see if the user has logged in. Is called after the person's login has been completed
@@ -94,11 +41,6 @@ function startWithName() {
 		welcome.id = "welcome";
 		welcome.class = "welcome";
 		welcome.innerHTML = "Hi, " + response.name + "!"
-		if (response.name != undefined) {
-			checkUser(response.name, response.id);
-		} else {
-			location.reload();
-		}
 		document.getElementById("perfil").appendChild(welcome);
 	});
 	// Calls the next function

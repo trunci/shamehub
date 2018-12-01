@@ -1,0 +1,10 @@
+{
+  "hosting": {
+    "public": "shamehub",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}

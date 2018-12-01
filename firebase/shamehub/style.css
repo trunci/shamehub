@@ -1,0 +1,150 @@
+
+head{
+    height:100%;
+}
+html,
+body {
+    background: #f2f2f2;
+    color: black;
+    height: 100%;
+    font-family: 'Source Sans Pro', sans-serif;
+    margin: 0;   
+}
+.hub {
+    font-weight: bold;
+    font-size: 5vw;
+    overflow: hidden;
+    color: white;
+    position: relative;
+    padding: 1%;
+    background: #3b5998;
+}
+.hub span:hover {
+    cursor: pointer;
+}
+
+.hub span:nth-child(2) {
+    background: white;
+    color: #3b5998;
+    border-radius: 1vw;
+    padding: 0 1vw 0.5vw 1vw;
+    display: inline-block;
+}
+
+.delete{
+    background-color: transparent;
+    margin-top: 0%;
+    color: white;
+    float: right;
+    transition: transform .2s;
+
+}
+
+.delete:hover {
+    transform: scale(1.2);
+}
+
+.main {
+    position: relative;
+    display: block;
+    width: 80%;
+    margin-bottom: 1%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #fec7c7;
+    padding: 10px 10px 10px 10px;
+    border-radius: 25px;
+    -moz-border-radius: 25px;
+    -webkit-border-radius: 25px;
+    border: 0px solid;
+    height: 5%;
+    text-align: left;    
+    font-family: 'Source Sans Pro', sans-serif;
+    transition: background-color 4s;
+    transition: box-shadow 0.3s;
+
+}
+
+.main:hover{
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.date {
+    font-family: 'Montserrat', sans-serif;
+    padding-right:10%;
+    align-content:center;
+    display:inline-block;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+.perfil{
+    padding-right: 10%;
+    text-align: right;
+    font-size: 1.5vw;
+}
+
+.content {
+    display: table-cell;
+    margin-left: 10%;
+    display: inline-block;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+.edit {
+    font-family: 'Montserrat', sans-serif;
+    display: inline-block;
+    float: right;
+    background-color: #d9d9d9;
+    padding: 0 0 0 0;
+}
+
+.footnotes{
+    height: 50px;
+    text-align: center;
+
+}
+
+.welcome {
+    font-family: 'Montserrat', sans-serif;
+    padding: 10px 10px 10px 10px;
+    text-align: center;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    float: top;
+    margin-top: 20px;
+}
+
+.topbar {
+    background-color: #4567b0;
+    float: top;
+    width: 100.5% border-bottom:solid;
+    border-color: black;
+    border-width: 0.5px;
+    margin-left: -9px;
+    margin-top: -10px;
+    margin-right: -10px;
+    overflow: no-display;
+    padding-bottom:5px;
+}
+
+.score {
+    margin-left: 20%;
+    display: inline-block;
+}
+
+.counts {
+    position: relative;
+    margin-left: 10%;
+    display: inline-block;
+    margin-left: 20%;
+}
+
+.opened {
+    background-color: #869dd0; 
+}
+
+.wrapper {
+    min-height: 100%;
+    margin-bottom: -50px;
+}
