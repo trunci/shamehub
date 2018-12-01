@@ -194,11 +194,11 @@ function generateBoxes(response) {
 		message = response.data[i].message;
 		id = response.data[i].id;
 		if (message != null){
-			message = message.toLowerCase();
+			message_lower = message.toLowerCase();
 		}
 
 		for (x=0; x<700; x++){
-			if (message != null && document.getElementById(id) == null && message.search(list[x]) != -1){
+			if (message != null && document.getElementById(id) == null && message_lower.search(list[x]) != -1){
 				generateBox(id, time, message);
 				found = found + 1;
 				break;
