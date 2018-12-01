@@ -39,13 +39,17 @@ var config = {
 firebase.initializeApp(config);
 var database = firebase.database();
 
+// Get the lsit of words from the database
+database.ref('words/').on('value', function(snapshot) {
+		list = snapshot.val();
+	});
 
 // Check to see the info on the user or create a new user
 function checkUser(name, userId){
 	// Check if user has already used the website
 	let a;
 	database.ref('users/' + userId).on('value', function(snapshot) {
-		a = snapshot; 
+		a = snapshot.val(); 
 	});
 
 	if (a == undefined) {
