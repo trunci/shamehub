@@ -198,11 +198,10 @@ function generateBoxes(response) {
 		}
 
 		for (x=0; x<700; x++){
-			if (message != null && message.search(list[x]) != -1 && document.getElementById(id) == null){
+			if (message != null && document.getElementById(id) == null && message.search(list[x]) != -1){
 				generateBox(id, time, message);
 				found = found + 1;
-			}
-			else{
+				break;
 			}
 		}
 		analyzed = analyzed + 1;
