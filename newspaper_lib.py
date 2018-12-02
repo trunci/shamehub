@@ -1,4 +1,5 @@
 import json
+import numpy as np
 import newspaper
 from newspaper import Article
 import imp
@@ -37,7 +38,12 @@ with open('Terms-to-Block.csv') as csv_file:
 dict_entry['controversial_words'] = keywords
 dict_entry['bad_words'] = words 
 
-print(dict_entry)
+ola = np.concatenate((keywords, words))
+print ("[")
+for i in ola:
+    print(("'" + i + "',"), end='', flush=True)
+print ("]")
+    
 
 with open('keywords.json', 'w') as outfile:
     json.dump(dict_entry, outfile)

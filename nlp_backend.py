@@ -12,7 +12,6 @@ df = df.dropna()
 df.head()
 df[df['tags'].str.contains('python')].head()
 
-
 cv = sklearn.feature_extraction.text.CountVectorizer()
 m = cv.fit_transform(['this is a document', 'this is a second document', 'third document document document']).todense()
 print(cv.vocabulary_)
@@ -57,8 +56,4 @@ svd.fit(tfidf_matrix)
 for i in range(len(svd.components_)):
     topk = sorted(zip(svd.components_[i], tfidf_vectorizer.get_feature_names()), reverse=True)[:10]
     print(' | '.join(w for _, w in topk))
-
-
-
-
 
