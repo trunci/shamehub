@@ -3,6 +3,16 @@ import sklearn #python library for classical machine learning
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+
+import firebase_admin
+from firebase_admin import credentials
+
+cred = credentials.Certificate("firebase-key.json")
+firebase_admin.initialize_app(cred)
+
+from firebase_admin import db
+
+root = db.reference(path = '/words', url = 'https://shamehub-101010.firebaseio.com/')
 # this can also be a local (to the cloud instance) file!
 location = 'https://gist.githubusercontent.com/ruyimarone/04d356038138f12df205da9934e797f1/raw/e3bb9212eae46e10f85b765f5a3ab95e0428c3ee/data.csv'
 df = pd.read_csv(location)
@@ -54,6 +64,11 @@ tfidf_matrix = tfidf_vectorizer.fit_transform(df['description'])
 svd = SVD(10)
 svd.fit(tfidf_matrix)
 #show just the words, not the scores this time
+a = ''
+for i in range(len(svd.components_)):
+    topk = sorted(zip(svd.components_[i], tfidf_vectorizer.get_feature_names()), reverse=True)[:10]
+    a += ','.join(w for _, w in topk)
+root.set(value = a)
 for i in range(len(svd.components_)):
     topk = sorted(zip(svd.components_[i], tfidf_vectorizer.get_feature_names()), reverse=True)[:10]
     print(' | '.join(w for _, w in topk))
