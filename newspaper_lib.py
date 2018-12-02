@@ -44,7 +44,5 @@ for i in ola:
     print(("'" + i + "',"), end='', flush=True)
 print ("]")
     
-
 with open('keywords.json', 'w') as outfile:
     json.dump(dict_entry, outfile)
-
